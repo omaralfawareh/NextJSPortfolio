@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
         onCollapse={toggleSider}
         collapsed={collapsed}
         collapsedWidth="0"
-        // width={window?.innerWidth < 768 ? "100vw" : 390}
+        width={390}
         // trigger={<SidebarTrigger />}
       >
         <div
