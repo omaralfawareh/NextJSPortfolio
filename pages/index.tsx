@@ -1,11 +1,11 @@
-import { Inter } from "next/font/google";
+import Home from "../components/home";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
+export default function HomePage() {
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    ></main>
+      className={`min-h-screen flex flex-col items-center content-center justify-center p-24`}
+    >
+      <Home />
+    </main>
   );
 }

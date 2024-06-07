@@ -12,7 +12,6 @@ import {
 const { Sider, Content } = Layout;
 
 export default function App({ Component, pageProps }: AppProps) {
-  // return <Component {...pageProps} />;
   const [collapsed, setCollapsed] = useState(false);
   const toggleSider = () => {
     setCollapsed(!collapsed);
@@ -27,78 +26,45 @@ export default function App({ Component, pageProps }: AppProps) {
         collapsed={collapsed}
         collapsedWidth="0"
         width={390}
-        // trigger={<SidebarTrigger />}
+        // trigger={<SidebarTrigger />} //for a custom sidebar trigger
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "100vh",
-            padding: "0",
-          }}
-        >
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+        <div className="flex flex-row items-center justify-center h-full p-0">
+          <div className="flex flex-col items-center justify-center w-full">
             <Menu
               className="menu"
               theme="dark"
               mode="inline"
               onClick={({ key }) => {
-                // router.push(key);
-                // if (window.innerWidth < 768) toggleSider();
+                router.push(key);
               }}
               items={[
                 {
                   label: <h3 className="label">home</h3>,
                   key: "/",
-                  icon: <HomeOutlined className="menuIcon" />,
+                  icon: <HomeOutlined className="" />,
                 },
                 {
                   label: <h3 className="label">about</h3>,
                   key: "/about",
-                  icon: <UserOutlined className="menuIcon" />,
+                  icon: <UserOutlined className="" />,
                 },
                 {
                   label: <h3 className="label">projects</h3>,
                   key: "/projects",
-                  icon: <SettingOutlined className="menuIcon" />,
+                  icon: <SettingOutlined className="" />,
                 },
                 {
                   label: <h3 className="label">contact</h3>,
                   key: "/contact",
-                  icon: <MailFilled className="menuIcon" />,
+                  icon: <MailFilled className="" />,
                 },
               ]}
-            ></Menu>
+            />
           </div>
         </div>
       </Sider>
-      <Layout style={{ backgroundColor: "#36454f" }}>
-        <Content
-          className="container"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            alignContent: "center",
-            backgroundColor: "#36454f",
-            height: "100%",
-            width: collapsed ? "100%" : "calc(100% - 390px)", //To Adjust the width based on Sider state
-            marginLeft: collapsed ? 0 : 390, //To Adjust margin based on Sider state
-            // transition:
-            //   window.innerWidth >= 768 ? "width 0.8s, margin-left 0.8s" : "", //To Specify transitions for width and margin-left but non on mobile
-          }}
-        >
+      <Layout>
+        <Content className="flex-col justify-center items-center h-full bg-[#36454f]">
           <Component {...pageProps} />
         </Content>
       </Layout>
