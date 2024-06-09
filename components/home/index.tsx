@@ -7,10 +7,8 @@ import {
   FacebookFilled,
 } from "@ant-design/icons";
 import { TypeAnimation } from "react-type-animation";
-import { useRouter } from "next/navigation";
 
 const Home = () => {
-  const router = useRouter();
   return (
     <div className="flex flex-col gap-2 content-center justify-center">
       <h1 className="font-medium text-6xl">Omar Alfawareh</h1>
