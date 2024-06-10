@@ -68,7 +68,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Sider>
       <Layout>
         <Content
-          className={`flex-col min-h-screen justify-center items-center bg-[#36454f] dark:text-white ${
+          className={`flex-col min-h-screen justify-center items-center bg-[#111] dark:text-white ${
             collapsed ? "" : "hidden"
           } md:block`}
         >
