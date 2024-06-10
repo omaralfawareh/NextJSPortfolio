@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, Layout } from "antd";
 import router from "next/router";
 import {
@@ -34,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
       >
         <div className="flex flex-col items-center justify-center w-screen h-full md:w-full p-5 bg-black">
           <Menu
-            className="bg-black flex flex-col items-center justify-center w-1/3 md:w-full font-bold text-xl"
+            className="bg-black flex flex-col items-center justify-center w-full font-bold text-xl"
             theme="dark"
             mode="inline"
             onClick={({ key }) => {
@@ -44,7 +44,7 @@ export default function App({ Component, pageProps }: AppProps) {
             items={[
               {
                 className:
-                  "group w-1/2 focus:bg-[#111] transition-all bg-black",
+                  "group w-[11rem] focus:bg-[#111] transition-all bg-black",
                 label: (
                   <h3 className="label group-hover:tracking-widest transition-all ">
                     home
@@ -54,7 +54,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 icon: <HomeOutlined className="text-xl" />,
               },
               {
-                className: "group w-1/2 focus:bg-[#111] bg-black",
+                className: "group w-[11rem] focus:bg-[#111] bg-black",
                 label: (
                   <h3 className="label group-hover:tracking-widest transition-all">
                     about
@@ -64,7 +64,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 icon: <UserOutlined className="text-xl" />,
               },
               {
-                className: "group w-1/2 focus:bg-[#111] bg-black",
+                className: "group w-[11rem] focus:bg-[#111] bg-black",
                 label: (
                   <h3 className="label group-hover:tracking-widest transition-all">
                     projects
@@ -74,7 +74,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 icon: <SettingOutlined className="text-xl" />,
               },
               {
-                className: "group w-1/2 focus:bg-[#111] bg-black",
+                className: "group w-[11rem] focus:bg-[#111] bg-black",
                 label: (
                   <h3 className="label group-hover:tracking-widest transition-all">
                     contact
