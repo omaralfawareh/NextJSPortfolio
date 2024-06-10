@@ -26,7 +26,7 @@ const Home = () => {
           "Full-Stack Developer",
           1000,
         ]}
-        wrapper="span"
+        wrapper="h2"
         speed={50}
         repeat={Infinity}
       />

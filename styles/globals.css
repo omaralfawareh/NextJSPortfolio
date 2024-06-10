@@ -25,7 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
+.ant-menu-item-selected {
+  background-color: #111 !important;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;

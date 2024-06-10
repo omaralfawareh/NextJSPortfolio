@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
         onCollapse={toggleSider}
         collapsed={collapsed}
         collapsedWidth="0"
-        width={350}
+        width={450}
         zeroWidthTriggerStyle={
           collapsed
             ? { backgroundColor: "black" }
@@ -34,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
       >
         <div className="flex flex-col items-center justify-center w-screen h-full md:w-full p-5 bg-black">
           <Menu
-            className="bg-black flex flex-col items-center justify-center w-1/3 md:w-1/2"
+            className="bg-black flex flex-col items-center justify-center w-1/3 md:w-full font-bold text-xl"
             theme="dark"
             mode="inline"
             onClick={({ key }) => {
@@ -43,24 +43,45 @@ export default function App({ Component, pageProps }: AppProps) {
             }}
             items={[
               {
-                label: <h3 className="label">home</h3>,
+                className:
+                  "group w-1/2 focus:bg-[#111] transition-all bg-black",
+                label: (
+                  <h3 className="label group-hover:tracking-widest transition-all ">
+                    home
+                  </h3>
+                ),
                 key: "/",
-                icon: <HomeOutlined className="" />,
+                icon: <HomeOutlined className="text-xl" />,
               },
               {
-                label: <h3 className="label">about</h3>,
+                className: "group w-1/2 focus:bg-[#111] bg-black",
+                label: (
+                  <h3 className="label group-hover:tracking-widest transition-all">
+                    about
+                  </h3>
+                ),
                 key: "/about",
-                icon: <UserOutlined className="" />,
+                icon: <UserOutlined className="text-xl" />,
               },
               {
-                label: <h3 className="label">projects</h3>,
+                className: "group w-1/2 focus:bg-[#111] bg-black",
+                label: (
+                  <h3 className="label group-hover:tracking-widest transition-all">
+                    projects
+                  </h3>
+                ),
                 key: "/projects",
-                icon: <SettingOutlined className="" />,
+                icon: <SettingOutlined className="text-xl" />,
               },
               {
-                label: <h3 className="label">contact</h3>,
+                className: "group w-1/2 focus:bg-[#111] bg-black",
+                label: (
+                  <h3 className="label group-hover:tracking-widest transition-all">
+                    contact
+                  </h3>
+                ),
                 key: "/contact",
-                icon: <MailFilled className="" />,
+                icon: <MailFilled className="text-xl" />,
               },
             ]}
           />
