@@ -17,54 +17,61 @@ export default function App({ Component, pageProps }: AppProps) {
     setCollapsed(!collapsed);
   };
   return (
-    <Layout>
+    <Layout className="fixed w-screen">
       <Sider
-        className="sider bg-white"
+        className="h-screen"
         breakpoint="lg"
         collapsible
         onCollapse={toggleSider}
         collapsed={collapsed}
         collapsedWidth="0"
-        width={390}
-        // trigger={<SidebarTrigger />} //for a custom sidebar trigger
+        width={350}
+        zeroWidthTriggerStyle={
+          collapsed
+            ? { backgroundColor: "black" }
+            : { backgroundColor: "black", display: "none" }
+        }
       >
-        <div className="flex flex-row items-center justify-center h-full p-0 dark:bg-black dark:text-white">
-          <div className="flex flex-col items-center justify-center w-full">
-            <Menu
-              className="menu dark:bg-black"
-              theme="dark"
-              mode="inline"
-              onClick={({ key }) => {
-                router.push(key);
-              }}
-              items={[
-                {
-                  label: <h3 className="label">home</h3>,
-                  key: "/",
-                  icon: <HomeOutlined className="" />,
-                },
-                {
-                  label: <h3 className="label">about</h3>,
-                  key: "/about",
-                  icon: <UserOutlined className="" />,
-                },
-                {
-                  label: <h3 className="label">projects</h3>,
-                  key: "/projects",
-                  icon: <SettingOutlined className="" />,
-                },
-                {
-                  label: <h3 className="label">contact</h3>,
-                  key: "/contact",
-                  icon: <MailFilled className="" />,
-                },
-              ]}
-            />
-          </div>
+        <div className="flex flex-col items-center justify-center w-screen h-full md:w-full p-5 bg-black">
+          <Menu
+            className="bg-black flex flex-col items-center justify-center w-1/3 md:w-1/2"
+            theme="dark"
+            mode="inline"
+            onClick={({ key }) => {
+              router.push(key);
+              window.innerWidth < 768 ? setCollapsed(true) : null;
+            }}
+            items={[
+              {
+                label: <h3 className="label">home</h3>,
+                key: "/",
+                icon: <HomeOutlined className="" />,
+              },
+              {
+                label: <h3 className="label">about</h3>,
+                key: "/about",
+                icon: <UserOutlined className="" />,
+              },
+              {
+                label: <h3 className="label">projects</h3>,
+                key: "/projects",
+                icon: <SettingOutlined className="" />,
+              },
+              {
+                label: <h3 className="label">contact</h3>,
+                key: "/contact",
+                icon: <MailFilled className="" />,
+              },
+            ]}
+          />
         </div>
       </Sider>
       <Layout>
-        <Content className="flex-col justify-center items-center h-full bg-[#36454f] dark:text-white">
+        <Content
+          className={`flex-col min-h-screen justify-center items-center bg-[#36454f] dark:text-white ${
+            collapsed ? "" : "hidden"
+          } md:block`}
+        >
           <Component {...pageProps} />
         </Content>
       </Layout>
