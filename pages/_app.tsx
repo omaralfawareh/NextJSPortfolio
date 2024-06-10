@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 className:
                   "group w-[11rem] focus:bg-[#111] transition-all bg-black",
                 label: (
-                  <h3 className="label group-hover:tracking-widest transition-all ">
+                  <h3 className="label group-hover:tracking-widest transition-all">
                     home
                   </h3>
                 ),
