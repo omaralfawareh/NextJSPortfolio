@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Link from "next/link";
+import { message as Message } from "antd";
 import type { contactDataType } from "../api/contact";
 
 const Index: React.FC = () => {
@@ -8,12 +8,36 @@ const Index: React.FC = () => {
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [message, setMessage] = useState("");
 
-  const handleMessage = () => {
+  const handleMessage = async () => {
+    if (name === "") {
+      Message.error("Please enter a name.");
+      return;
+    }
+    if (!validateEmail(email)) {
+      Message.error("Please enter a valid email address.");
+      return;
+    }
+    if (message === "") {
+      Message.error("Please enter a message.");
+      return;
+    }
     const data: contactDataType = { name, email, message };
-    fetch("/api/contact", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+      }
+      const resultData = await response.json();
+      console.log(resultData.message);
+      Message.success(resultData.message);
+    } catch (e) {
+      const error = e as Error;
+      Message.error(error.message);
+    }
   };
   const validateEmail = (email: String) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -36,26 +60,30 @@ const Index: React.FC = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <input
-          className={`bg-[#111] rounded px-5 py-2 h-1/4 w-[90%] focus:border-red-500 focus-visible:border-red-500 md:w-[80%] ${
-            !isValidEmail ? "border border-red-500" : ""
-          }`}
-          type="text"
-          placeholder="Email"
-          name="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            setIsValidEmail(validateEmail(e.target.value));
-          }}
-        />
-        {!isValidEmail ? (
-          email != "" ? (
-            <p className="text-red-500">Please enter a valid email address.</p>
-          ) : (
-            <p className="text-red-500">This field is required</p>
-          )
-        ) : null}
+        <div className="w-[90%] md:w-[80%]">
+          <input
+            className={`bg-[#111] rounded px-5 py-2  w-full focus:border-red-500 focus-visible:border-red-500 mb-1 ${
+              !isValidEmail ? "border border-red-500" : ""
+            }`}
+            type="text"
+            placeholder="Email"
+            name="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setIsValidEmail(validateEmail(e.target.value));
+            }}
+          />
+          {!isValidEmail ? (
+            email != "" ? (
+              <p className="text-red-500 w-[90%] md:w-[80%]">
+                Please enter a valid email address.
+              </p>
+            ) : (
+              <p className="text-red-500">This field is required</p>
+            )
+          ) : null}
+        </div>
         <textarea
           className="bg-[#111] rounded px-5 py-2 h-full w-[90%] md:w-[80%]"
           placeholder="Enter Message"
