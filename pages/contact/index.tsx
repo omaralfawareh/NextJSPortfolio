@@ -51,9 +51,9 @@ const Index: React.FC = () => {
       <h1 className="text-center text-6xl md:text-left font-medium ">
         Get in Touch
       </h1>
-      <div className="flex flex-col justify-center items-center gap-10 h-1/2 w-full md:w-1/2  bg-black py-10 px-0 rounded-2xl shadow-2xl shadow-white">
+      <div className="flex flex-col justify-center items-center gap-10 h-1/2 w-full md:w-1/2 bg-black py-10 px-0 rounded-2xl shadow-2xl shadow-white">
         <input
-          className="bg-[#111] rounded px-5 py-2 h-1/4 w-[90%] md:w-[80%] "
+          className="bg-[#111] rounded px-5 py-2 h-1/4 w-[90%] md:w-[80%] focus-visible:outline-white"
           type="text"
           placeholder="Name"
           name="name"
@@ -62,7 +62,7 @@ const Index: React.FC = () => {
         />
         <div className="w-[90%] md:w-[80%]">
           <input
-            className={`bg-[#111] rounded px-5 py-2  w-full focus:border-red-500 focus-visible:border-red-500 mb-1 ${
+            className={`bg-[#111] rounded px-5 py-2  w-full focus-visible:outline-white mb-1 ${
               !isValidEmail ? "border border-red-500" : ""
             }`}
             type="text"
@@ -85,7 +85,7 @@ const Index: React.FC = () => {
           ) : null}
         </div>
         <textarea
-          className="bg-[#111] rounded px-5 py-2 h-full w-[90%] md:w-[80%]"
+          className="bg-[#111] rounded px-5 py-2 h-full w-[90%] md:w-[80%] focus-visible:outline-white"
           placeholder="Enter Message"
           name="message"
           value={message}
@@ -93,7 +93,7 @@ const Index: React.FC = () => {
         />
         <button
           onClick={handleMessage}
-          className="text-base bg-[#111] px-5 py-2 w-full w-[90%] md:w-[80%] rounded mt-2 hover:text-white text-center "
+          className="text-base bg-[#111] px-5 py-2 w-[90%] md:w-[80%] rounded mt-2 hover:text-white text-center "
         >
           Send Message
         </button>

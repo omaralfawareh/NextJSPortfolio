@@ -13,6 +13,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  
   if (req.method != "POST") {
     res.setHeader("Allow", ["POST"]);
     return res
@@ -20,13 +21,14 @@ export default async function handler(
       .json({ error: `Method ${req.method} is not supported` });
   } else {
     const data: contactDataType = JSON.parse(req.body);
+    console.log("data", data, ' ', process.env.resendAPI )
     try {
       const resend = new Resend(process.env.resendAPI);
       const response = await resend.emails.send({
         from: "onboarding@resend.dev",
         to: "alfawareho@gmail.com",
         subject: `Email from ${data.name}(${data.email})`,
-        text: data.message,
+        text: `Sender: ${data.name}\nEmail: ${data.email}\nMessage: ${data.message}`,
       });
       if (response.error) {
         throw response.error;
@@ -37,6 +39,6 @@ export default async function handler(
         .status(error?.statusCode)
         .json({ message: error?.message, name: error?.name });
     }
-    return res.status(200).json({ message: "Sent Message Successfuly", data });
+    return res.status(200).json({ message: "Sent Message Successfully", data });
   }
 }
