@@ -10,7 +10,7 @@ import { TypeAnimation } from "react-type-animation";
 
 const Home = () => {
   return (
-    <div className="flex flex-col gap-2 content-center justify-center">
+    <div className="flex flex-col gap-2 content-center justify-center p-12">
       <h1 className="text-center md:text-left font-medium text-6xl">
         Omar Alfawareh
       </h1>

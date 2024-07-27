@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Menu, Layout } from "antd";
 import router from "next/router";
 import {
@@ -17,9 +17,9 @@ export default function App({ Component, pageProps }: AppProps) {
     setCollapsed(!collapsed);
   };
   return (
-    <Layout className="fixed w-screen">
+    <Layout className="fixed w-screen h-screen">
       <Sider
-        className="h-screen"
+        className="fixed h-full"
         breakpoint="lg"
         collapsible
         onCollapse={toggleSider}
@@ -87,9 +87,9 @@ export default function App({ Component, pageProps }: AppProps) {
           />
         </div>
       </Sider>
-      <Layout>
+      <Layout className="lg:ml-[450px]">
         <Content
-          className={`flex-col min-h-screen justify-center border items-center bg-[#111] dark:text-white ${
+          className={`flex-col min-h-screen justify-center items-center bg-[#111] dark:text-white overflow-y-auto ${
             collapsed ? "" : "hidden"
           } md:block`}
         >
