@@ -9,25 +9,25 @@ const index = () => {
       src: "business",
     },
     {
-      text: "Bussiness",
+      text: "A responsive website representing and describing a seminar held by a company.",
       link: "https://github.com/omaralfawareh/",
       src: "seminar",
     },
     {
-      text: "Bussiness",
+      text: '"Delivery Dash" is a 2D delivery game developed in Unity using C#.',
       link: "https://github.com/omaralfawareh/",
       src: "unity",
     },
     {
-      text: "Bussiness",
+      text: "Login Page made in React Js connected with Firebase.",
       link: "https://github.com/omaralfawareh/",
       src: "login",
     },
   ];
   return (
-    <div className="flex flex-col gap-8 min-h-screen p-12 text-base">
+    <div className="flex flex-col gap-8 min-h-screen p-1 md:p-12 text-base">
       <h1 className="text-left font-medium text-4xl">Projects</h1>
-      <div className="flex flex-col md:flex-row gap-10 flex-wrap justify-center w-full ">
+      <div className="flex flex-col md:flex-row gap-10 flex-wrap justify-center w-full border p-3">
         {projects.map(({ text, link, src }) => (
           <Project key={link} text={text} link={link} src={src} />
         ))}

@@ -30,7 +30,6 @@ function About() {
     "../../assets/cpp.png",
     "../../assets/css.png",
     "../../assets/html.png",
-    "../../assets/python.png",
     "../../assets/csharp.png",
     "../../assets/unity.png",
     "../../assets/bootstrap.png",
@@ -89,7 +88,6 @@ function About() {
       </Link>
       <h2 className="text-left text-2xl">Skills</h2>
       <hr />
-      {/* <SkillsCarousel /> */}
       <div className="flex justify-between flex-wrap">
         {skills.map((skill) => {
           return (
@@ -108,7 +106,6 @@ function About() {
         <div className="flex flex-col gap-2 w-full">
           <h2 className="text-left text-2xl m-1">Experience</h2>
           <Timeline
-            className="timeline h-"
             items={[
               {
                 children: (
@@ -147,9 +144,8 @@ function About() {
           />
         </div>
         <div className="w-full flex gap-2 m-1 flex-col">
-          <h2 className="text-white text-base text-2xl">Education</h2>
+          <h2 className="text-left text-2xl m-1">Education</h2>
           <Timeline
-            className="timeline"
             items={[
               {
                 children: (

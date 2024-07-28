@@ -22,12 +22,28 @@ type ProjectTypes = {
 const Project = ({ text, src, link }: ProjectTypes) => {
   const imageSrc = imageMap[src];
   return (
-    <div className="flex flex-col border  rounded-2xl overflow-hidden shadow-md shadow-white justify-between items-center md:w-[40%]">
-      <Image alt={src} src={imageSrc} />
-      <div className="flex justify-between items-center bg-black p-5 py-2 w-full">
-        <p className="text-base">{text} Project</p>
-        <div className="flex flex-col justify-between items-center bg-[#111] w-20 h-full">
-          <Link href={link}>GITHUB</Link>
+    <div className="flex flex-col rounded-2xl w-full overflow-hidden border border-black justify-between min-h-full items-center md:w-[35%] ">
+      <div className="group">
+        <Image
+          alt={src}
+          src={imageSrc}
+          className={`w-[600px] h-[200px] cursor-pointer transition-all duration-500  ${
+            src === "unity" ? "object-scale-down" : "object-fill"
+          } group-hover:contrast-[0.45]`}
+          onClick={() => {
+            window.open(link, "_blank");
+          }}
+        />
+      </div>
+      <div className="flex justify-between items-center bg-black p-5 min-h-[30%] w-full transition-all duration-300 ease-in-out group-hover:scale-105">
+        <p className="text-base mr-2">{text} Project</p>
+        <div className="flex flex-col justify-center items-center bg-[#111] w-[200px] h-[35px] px-2 rounded">
+          <Link
+            className="text-center group-hover:tracking-widest group-hover:text-blue-300 transition-all"
+            href={link}
+          >
+            GITHUB
+          </Link>
         </div>
       </div>
     </div>
