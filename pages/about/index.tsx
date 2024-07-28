@@ -3,7 +3,14 @@ import { Timeline } from "antd";
 import Link from "next/link";
 import Image from "next/image";
 // import Resume from "../../assets/Resume.pdf";
-
+import ReactLogo from "../../public/assets/react.png";
+import JavaLogo from "../../public/assets/java.png";
+import CppLogo from "../../public/assets/cpp.png";
+import CssLogo from "../../public/assets/css.png";
+import HtmlLogo from "../../public/assets/html.png";
+import CsharpLogo from "../../public/assets/csharp.png";
+import UnityLogo from "../../public/assets/unity.png";
+import BootstrapLogo from "../../public/assets/bootstrap.png";
 const calculateAge = (birthday: string) => {
   const birthDate = new Date(birthday);
   const today = new Date();
@@ -23,14 +30,14 @@ const calculateAge = (birthday: string) => {
 function About() {
   const age = calculateAge("2002-04-17");
   const skills = [
-    "../../assets/react.png",
-    "../../assets/java.png",
-    "../../assets/cpp.png",
-    "../../assets/css.png",
-    "../../assets/html.png",
-    "../../assets/csharp.png",
-    "../../assets/unity.png",
-    "../../assets/bootstrap.png",
+    { src: ReactLogo, alt: "React" },
+    { src: JavaLogo, alt: "Java" },
+    { src: CppLogo, alt: "C++" },
+    { src: CssLogo, alt: "CSS" },
+    { src: HtmlLogo, alt: "HTML" },
+    { src: CsharpLogo, alt: "C#" },
+    { src: UnityLogo, alt: "Unity" },
+    { src: BootstrapLogo, alt: "Bootstrap" },
   ];
   return (
     <div className="flex flex-col gap-8 justify-center p-12 text-base">
@@ -90,9 +97,9 @@ function About() {
         {skills.map((skill) => {
           return (
             <Image
-              alt={skill}
-              key={skill}
-              src={require(skill)}
+              alt={skill.alt}
+              key={skill.alt}
+              src={skill.src}
               width={100}
               height={100}
             />

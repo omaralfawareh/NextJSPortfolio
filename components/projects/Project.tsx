@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Business from "../../assets/business.png";
-import Seminar from "../../assets/seminar.png";
-import Unity from "../../assets/unity.png";
-import Login from "../../assets/login.png";
+import Business from "../../public/assets/business.png";
+import Seminar from "../../public/assets/seminar.png";
+import Unity from "../../public/assets/unity.png";
+import Login from "../../public/assets/login.png";
 
 const imageMap = {
   business: Business,
