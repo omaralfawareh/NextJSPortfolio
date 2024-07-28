@@ -1,10 +1,8 @@
 import React from "react";
-import { Flex, Timeline } from "antd";
-import { DownloadOutlined } from "@ant-design/icons";
+import { Timeline } from "antd";
 import Link from "next/link";
 import Image from "next/image";
 // import Resume from "../../assets/Resume.pdf";
-import SkillsCarousel from "../../components/about/SkillsCarousel";
 
 const calculateAge = (birthday: string) => {
   const birthDate = new Date(birthday);
