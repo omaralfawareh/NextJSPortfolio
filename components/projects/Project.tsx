@@ -22,12 +22,12 @@ type ProjectTypes = {
 const Project = ({ text, src, link }: ProjectTypes) => {
   const imageSrc = imageMap[src];
   return (
-    <div className="flex flex-col rounded-2xl w-full overflow-hidden border border-black justify-between min-h-full items-center md:w-[35%] ">
+    <div className="flex flex-col rounded-xl w-full overflow-hidden border border-black justify-between min-h-full items-center md:w-[35%] ">
       <div className="group">
         <Image
           alt={src}
           src={imageSrc}
-          className={`w-[600px] h-[200px] cursor-pointer transition-all duration-500  ${
+          className={`w-[600px] h-[250px] cursor-pointer transition-all duration-500  ${
             src === "unity" ? "object-scale-down" : "object-fill"
           } group-hover:contrast-[0.45]`}
           onClick={() => {
@@ -35,9 +35,9 @@ const Project = ({ text, src, link }: ProjectTypes) => {
           }}
         />
       </div>
-      <div className="flex justify-between items-center bg-black p-5 min-h-[30%] w-full transition-all duration-300 ease-in-out group-hover:scale-105">
+      <div className="flex flex-col lg:flex-row justify-between items-center bg-black p-5 min-h-[30%] w-full transition-all duration-300 ease-in-out group-hover:scale-105">
         <p className="text-base mr-2">{text} Project</p>
-        <div className="flex flex-col justify-center items-center bg-[#111] w-[200px] h-[35px] px-2 rounded">
+        <div className="flex flex-col justify-center items-center bg-[#111] w-full lg:w-[200px] h-[35px] px-2 rounded">
           <Link
             className="text-center group-hover:tracking-widest group-hover:text-blue-300 transition-all"
             href={link}
