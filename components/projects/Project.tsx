@@ -25,6 +25,7 @@ const Project = ({ text, src, link }: ProjectTypes) => {
     <div className="flex flex-col rounded-xl w-full overflow-hidden border border-black justify-between min-h-full items-center md:w-[35%] ">
       <div className="group">
         <Image
+          priority={true}
           alt={src}
           src={imageSrc}
           className={`w-[600px] h-[250px] cursor-pointer transition-all duration-500  ${
