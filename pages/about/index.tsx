@@ -86,10 +86,11 @@ function About() {
         </li>
       </ul>
       <Link
-        href="/about"
+        href="/assets/Resume.pdf"
+        target="_blank"
         className="text-base bg-black px-5 py-2 w-full md:w-1/3 rounded-l mt-2 hover:text-white text-center "
       >
-        Download CV
+        Resume
       </Link>
       <h2 className="text-left text-2xl">Skills</h2>
       <hr />
