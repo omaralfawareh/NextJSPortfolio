@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { message as Message } from "antd";
 import type { contactDataType } from "../api/contact";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Index: React.FC = () => {
   const [name, setName] = useState("");
@@ -103,3 +104,10 @@ const Index: React.FC = () => {
 };
 
 export default Index;
+export async function getStaticProps({ locale }: { locale: "ar" | "en" }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}

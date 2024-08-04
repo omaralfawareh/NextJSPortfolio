@@ -1,4 +1,5 @@
 import Home from "../components/home";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function HomePage() {
   return (
@@ -8,4 +9,11 @@ export default function HomePage() {
       <Home />
     </main>
   );
+}
+export async function getStaticProps({ locale }: { locale: "ar" | "en" }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
 }

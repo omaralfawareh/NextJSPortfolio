@@ -1,6 +1,7 @@
 import React from "react";
 import Project from "../../components/projects/Project";
 import { imageType } from "../../components/projects/Project";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 const index = () => {
   const projects: { text: string; link: string; src: imageType }[] = [
     {
@@ -37,3 +38,10 @@ const index = () => {
 };
 
 export default index;
+export async function getStaticProps({ locale }: { locale: "ar" | "en" }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}

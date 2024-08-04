@@ -2,22 +2,28 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import React, { useState } from "react";
 import { Menu, Layout } from "antd";
-import router from "next/router";
+import { useRouter } from "next/router";
+import { appWithTranslation, useTranslation } from "next-i18next";
 import {
   HomeOutlined,
   UserOutlined,
   SettingOutlined,
   MailFilled,
 } from "@ant-design/icons";
+
 const { Sider, Content } = Layout;
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   const [collapsed, setCollapsed] = useState(false);
+  const router = useRouter();
+  const { t } = useTranslation("common");
+
   const toggleSider = () => {
     setCollapsed(!collapsed);
   };
+
   return (
-    <Layout className="fixed w-screen h-screen">
+    <Layout className={`fixed w-screen h-screen `}>
       <Sider
         className="fixed h-full"
         breakpoint="lg"
@@ -47,7 +53,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   "group w-[11rem] focus:bg-[#111] transition-all bg-black",
                 label: (
                   <h3 className="label group-hover:tracking-widest transition-all">
-                    home
+                    {t("home")}
                   </h3>
                 ),
                 key: "/",
@@ -57,7 +63,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 className: "group w-[11rem] focus:bg-[#111] bg-black",
                 label: (
                   <h3 className="label group-hover:tracking-widest transition-all">
-                    about
+                    {t("about")}
                   </h3>
                 ),
                 key: "/about",
@@ -67,7 +73,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 className: "group w-[11rem] focus:bg-[#111] bg-black",
                 label: (
                   <h3 className="label group-hover:tracking-widest transition-all">
-                    projects
+                    {t("projects")}
                   </h3>
                 ),
                 key: "/projects",
@@ -77,7 +83,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 className: "group w-[11rem] focus:bg-[#111] bg-black",
                 label: (
                   <h3 className="label group-hover:tracking-widest transition-all">
-                    contact
+                    {t("contact")}
                   </h3>
                 ),
                 key: "/contact",
@@ -99,3 +105,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </Layout>
   );
 }
+
+export default appWithTranslation(App);
