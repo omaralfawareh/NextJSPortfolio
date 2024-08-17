@@ -33,3 +33,12 @@ body {
     text-wrap: balance;
   }
 }
+@layer components {
+  .rtl {
+    text-align: right;
+  }
+}
+.rtl {
+  direction: rtl !important;
+  text-align: right !important;
+}

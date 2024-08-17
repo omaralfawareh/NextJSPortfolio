@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  i18n: {
+    locales: ["en", "ar"],
+    defaultLocale: "en",
+  },
   experimental: { optimizeCss: true },
   reactStrictMode: true,
   transpilePackages: [
@@ -15,4 +19,4 @@ const nextConfig = {
   ],
 };
 
-export default nextConfig;
+module.exports = nextConfig;

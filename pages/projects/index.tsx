@@ -1,32 +1,38 @@
 import React from "react";
 import Project from "../../components/projects/Project";
 import { imageType } from "../../components/projects/Project";
-const index = () => {
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
+
+const Index = () => {
+  const { i18n, t } = useTranslation("common");
+  const align = i18n?.language === "ar" ? "text-right" : "text-left";
+
   const projects: { text: string; link: string; src: imageType }[] = [
     {
-      text: "A website made for subscription based business services. Coded in HTML and CSS.",
+      text: t("projects_descriptions.business"),
       link: "https://github.com/omaralfawareh/",
       src: "business",
     },
     {
-      text: "A responsive website representing and describing a seminar held by a company.",
+      text: t("projects_descriptions.seminar"),
       link: "https://github.com/omaralfawareh/",
       src: "seminar",
     },
     {
-      text: '"Delivery Dash" is a 2D delivery game developed in Unity using C#.',
+      text: t("projects_descriptions.unity"),
       link: "https://github.com/omaralfawareh/",
       src: "unity",
     },
     {
-      text: "Login Page made in React Js connected with Firebase.",
+      text: t("projects_descriptions.login"),
       link: "https://github.com/omaralfawareh/",
       src: "login",
     },
   ];
   return (
     <div className="flex flex-col gap-8 min-h-screen p-1 md:p-12  text-base max-h-screen">
-      <h1 className="text-left font-medium text-4xl">Projects</h1>
+      <h1 className={`${align} font-medium text-4xl`}>Projects</h1>
       <div className="flex flex-col md:flex-row gap-10 flex-wrap justify-center w-full p-3">
         {projects.map(({ text, link, src }) => (
           <Project key={link} text={text} link={link} src={src} />
@@ -36,4 +42,11 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
+export async function getStaticProps({ locale }: { locale: "ar" | "en" }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}

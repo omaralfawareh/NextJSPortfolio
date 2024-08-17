@@ -1,23 +1,42 @@
 import "@/styles/globals.css";
+import { Montserrat } from "next/font/google";
 import type { AppProps } from "next/app";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Menu, Layout } from "antd";
-import router from "next/router";
+import { useRouter } from "next/router";
+import { appWithTranslation, useTranslation } from "next-i18next";
+import { FloatButton } from "antd";
+import { GlobalOutlined } from "@ant-design/icons";
+
 import {
   HomeOutlined,
   UserOutlined,
   SettingOutlined,
   MailFilled,
 } from "@ant-design/icons";
+const montserrat = Montserrat({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
 const { Sider, Content } = Layout;
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   const [collapsed, setCollapsed] = useState(false);
+  const router = useRouter();
+  const { i18n, t } = useTranslation("common");
+  const { pathname, asPath, query } = router;
+
   const toggleSider = () => {
     setCollapsed(!collapsed);
   };
+  const handleChangeLanguage = async () => {
+    const nextLanguage = i18n.language === "en" ? "ar" : "en";
+    const newUrl = `${window.location.origin}/${nextLanguage}/${router.pathname}`;
+    window.location.href = newUrl;
+  };
   return (
-    <Layout className="fixed w-screen h-screen">
+    <Layout className={`fixed w-screen h-screen `}>
+      <FloatButton icon={<GlobalOutlined />} onClick={handleChangeLanguage} />
       <Sider
         className="fixed h-full"
         breakpoint="lg"
@@ -47,7 +66,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   "group w-[11rem] focus:bg-[#111] transition-all bg-black",
                 label: (
                   <h3 className="label group-hover:tracking-widest transition-all">
-                    home
+                    {t("home")}
                   </h3>
                 ),
                 key: "/",
@@ -57,7 +76,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 className: "group w-[11rem] focus:bg-[#111] bg-black",
                 label: (
                   <h3 className="label group-hover:tracking-widest transition-all">
-                    about
+                    {t("about")}
                   </h3>
                 ),
                 key: "/about",
@@ -67,7 +86,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 className: "group w-[11rem] focus:bg-[#111] bg-black",
                 label: (
                   <h3 className="label group-hover:tracking-widest transition-all">
-                    projects
+                    {t("projects")}
                   </h3>
                 ),
                 key: "/projects",
@@ -77,7 +96,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 className: "group w-[11rem] focus:bg-[#111] bg-black",
                 label: (
                   <h3 className="label group-hover:tracking-widest transition-all">
-                    contact
+                    {t("contact")}
                   </h3>
                 ),
                 key: "/contact",
@@ -87,9 +106,15 @@ export default function App({ Component, pageProps }: AppProps) {
           />
         </div>
       </Sider>
-      <Layout className="lg:ml-[450px]">
+      <Layout
+        className={`${
+          i18n.language == "en" ? "lg:ml-[450px]" : "lg:mr-[450px]"
+        }`}
+      >
         <Content
-          className={`flex-col min-h-screen justify-center items-center bg-[#111] dark:text-white overflow-y-auto ${
+          className={`${
+            montserrat.className
+          } flex-col min-h-screen justify-center items-center bg-[#111] dark:text-white overflow-y-auto ${
             collapsed ? "" : "hidden"
           } md:block`}
         >
@@ -99,3 +124,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </Layout>
   );
 }
+
+export default appWithTranslation(App);

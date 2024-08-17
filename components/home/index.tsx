@@ -7,31 +7,35 @@ import {
   FacebookFilled,
 } from "@ant-design/icons";
 import { TypeAnimation } from "react-type-animation";
+import { useTranslation } from "next-i18next";
 
 const Home = () => {
+  const { i18n, t } = useTranslation("common");
+  const align = i18n?.language === "ar" ? "md:text-right" : "md:text-left";
+
   return (
     <div className="flex flex-col gap-2 content-center justify-center p-12">
-      <h1 className="text-center md:text-left font-medium text-6xl">
-        Omar Alfawareh
+      <h1 className={`text-center ${align} font-medium text-6xl`}>
+        {t("name")}
       </h1>
       <TypeAnimation
-        className="text-xl text-center md:text-left"
+        className={`text-xl text-center ${align}`}
         sequence={[
-          "Software Engineer",
+          t("software_engineer"),
           1000,
-          "Web Developer",
+          t("web_developer"),
           1000,
-          "Mobile Developer",
+          t("mobile_developer"),
           1000,
-          "Full-Stack Developer",
+          t("full_stack_developer"),
           1000,
         ]}
         wrapper="h2"
         speed={50}
         repeat={Infinity}
       />
-      <p className="text-center md:text-left text-base text-[#bbb]">
-        Hardworking software engineering student and web developer.
+      <p className={`text-center ${align} text-base text-[#bbb]`}>
+        {t("description")}
       </p>
       <div className="flex flex-row gap-5 justify-center md:justify-start">
         <a
@@ -60,7 +64,7 @@ const Home = () => {
         href="/about"
         className="text-base bg-black px-5 py-2 w-full md:w-1/3 rounded-l mt-2 hover:text-white text-center md:hidden"
       >
-        About Me
+        {t("about_me")}
       </Link>
     </div>
   );
