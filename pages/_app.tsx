@@ -5,6 +5,9 @@ import React, { useEffect, useState } from "react";
 import { Menu, Layout } from "antd";
 import { useRouter } from "next/router";
 import { appWithTranslation, useTranslation } from "next-i18next";
+import { FloatButton } from "antd";
+import { GlobalOutlined } from "@ant-design/icons";
+
 import {
   HomeOutlined,
   UserOutlined,
@@ -21,13 +24,19 @@ function App({ Component, pageProps }: AppProps) {
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter();
   const { i18n, t } = useTranslation("common");
+  const { pathname, asPath, query } = router;
 
   const toggleSider = () => {
     setCollapsed(!collapsed);
   };
-
+  const handleChangeLanguage = async () => {
+    const nextLanguage = i18n.language === "en" ? "ar" : "en";
+    const newUrl = `${window.location.origin}/${nextLanguage}/${router.pathname}`;
+    window.location.href = newUrl;
+  };
   return (
     <Layout className={`fixed w-screen h-screen `}>
+      <FloatButton icon={<GlobalOutlined />} onClick={handleChangeLanguage} />
       <Sider
         className="fixed h-full"
         breakpoint="lg"
