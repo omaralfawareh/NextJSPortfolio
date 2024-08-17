@@ -44,7 +44,7 @@ const Project = ({ text, src, link }: ProjectTypes) => {
           i18n?.language == "ar" ? "lg:flex-row-reverse" : "lg:flex-row"
         } justify-between items-center bg-black p-5 min-h-[30%] w-full transition-all duration-300 ease-in-out group-hover:scale-105`}
       >
-        <p className="text-base mr-2">{text} Project</p>
+        <p className="text-base mr-2">{text}</p>
         <div className="flex flex-col justify-center items-center bg-[#111] w-full lg:w-[200px] h-[35px] px-2 rounded">
           <Link
             className="text-center group-hover:tracking-widest group-hover:text-blue-300 transition-all"
