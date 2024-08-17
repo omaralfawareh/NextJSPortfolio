@@ -13,15 +13,15 @@ const Index: React.FC = () => {
 
   const handleMessage = async () => {
     if (name === "") {
-      Message.error(t("contact.errorName"));
+      Message.error(t("contact_page.errorName"));
       return;
     }
     if (!validateEmail(email)) {
-      Message.error(t("contact.errorEmail"));
+      Message.error(t("contact_page.errorEmail"));
       return;
     }
     if (message === "") {
-      Message.error(t("contact.errorMessage"));
+      Message.error(t("contact_page.errorMessage"));
       return;
     }
     const data: contactDataType = { name, email, message };
