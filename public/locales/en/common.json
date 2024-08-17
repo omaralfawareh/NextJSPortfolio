@@ -37,5 +37,21 @@
   "web_developer": "Web Developer",
   "mobile_developer": "Mobile Developer",
   "full_stack_developer": "Full-Stack Developer",
-  "description": "Hardworking software engineering student and web developer."
+  "description": "Hardworking software engineering student and web developer.",
+  "projects_descriptions": {
+    "business": "A website made for subscription-based business services. Coded in HTML and CSS.",
+    "seminar": "A responsive website representing and describing a seminar held by a company.",
+    "unity": "\"Delivery Dash\" is a 2D delivery game developed in Unity using C#.",
+    "login": "Login Page made in React Js connected with Firebase."
+  },
+  "contact_page": {
+    "title": "Get In Touch",
+    "namePlaceholder": "Name",
+    "emailPlaceholder": "Email",
+    "messagePlaceholder": "Enter Message",
+    "sendMessageButton": "Send Message",
+    "errorName": "Please enter a name.",
+    "errorEmail": "Please enter a valid email address.",
+    "errorMessage": "Please enter a message."
+  }
 }

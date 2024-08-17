@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Timeline } from "antd";
 import Link from "next/link";
 import Image from "next/image";
-import { i18n, useTranslation } from "next-i18next";
+import { useTranslation } from "next-i18next";
 import ReactLogo from "../../public/assets/react.png";
 import JavaLogo from "../../public/assets/java.png";
 import CppLogo from "../../public/assets/cpp.png";
@@ -30,7 +30,7 @@ const calculateAge = (birthday: string) => {
 };
 
 function About() {
-  const { t } = useTranslation("common");
+  const { i18n, t } = useTranslation("common");
   const age = calculateAge("2002-04-17");
   const align = i18n?.language === "ar" ? "text-right" : "text-left";
 
@@ -47,9 +47,7 @@ function About() {
 
   return (
     <div className="flex flex-col gap-8 justify-center p-12 text-base">
-      <h1 className={`${align} font-medium text-4xl rtl:text-red-500`}>
-        {t("about_me")}
-      </h1>
+      <h1 className={`${align} font-medium text-4xl`}>{t("about_me")}</h1>
       <h2 className={`${align} text-2xl`}>{t("name")}</h2>
       <p className={`${align} text-left text-xl text-[#bbb]`}>
         {t("profession")}
@@ -82,13 +80,14 @@ function About() {
         <li>
           <span className="inline-block w-28">{t("phone")} :</span>
           <span>
-            <a href="tel:+962791141046">+962791141046</a>
+            <a href="tel:+962791141046">00962791141046</a>
           </span>
         </li>
       </ul>
       <Link
         href="/assets/Resume.pdf"
         target="_blank"
+        locale="en"
         className="text-base bg-black px-5 py-2 w-full md:w-1/3 rounded-l mt-2 hover:text-white text-center "
       >
         {t("resume")}
@@ -113,7 +112,6 @@ function About() {
             {t("experience")}
           </h2>
           <Timeline
-            mode={i18n?.language === "ar" ? "right" : "left"}
             items={[
               {
                 children: (
@@ -156,7 +154,6 @@ function About() {
             {t("education")}
           </h2>
           <Timeline
-            mode={i18n?.language === "ar" ? "right" : "left"}
             items={[
               {
                 children: (

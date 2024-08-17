@@ -10,14 +10,16 @@ import { TypeAnimation } from "react-type-animation";
 import { useTranslation } from "next-i18next";
 
 const Home = () => {
-  const { t } = useTranslation("common");
+  const { i18n, t } = useTranslation("common");
+  const align = i18n?.language === "ar" ? "md:text-right" : "md:text-left";
+
   return (
     <div className="flex flex-col gap-2 content-center justify-center p-12">
-      <h1 className="text-center md:text-left font-medium text-6xl">
+      <h1 className={`text-center ${align} font-medium text-6xl`}>
         {t("name")}
       </h1>
       <TypeAnimation
-        className="text-xl text-center md:text-left"
+        className={`text-xl text-center ${align}`}
         sequence={[
           t("software_engineer"),
           1000,
@@ -32,7 +34,7 @@ const Home = () => {
         speed={50}
         repeat={Infinity}
       />
-      <p className="text-center md:text-left text-base text-[#bbb]">
+      <p className={`text-center ${align} text-base text-[#bbb]`}>
         {t("description")}
       </p>
       <div className="flex flex-row gap-5 justify-center md:justify-start">

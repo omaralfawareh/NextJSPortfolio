@@ -38,3 +38,7 @@ body {
     text-align: right;
   }
 }
+.rtl {
+  direction: rtl !important;
+  text-align: right !important;
+}

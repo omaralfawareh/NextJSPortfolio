@@ -37,5 +37,21 @@
   "web_developer": "مطور ويب",
   "mobile_developer": "مطور موبايل",
   "full_stack_developer": "مطور Full-Stack",
-  "description": ".طالب هندسة برمجيات مجتهد ومطور ويب"
+  "description": ".طالب هندسة برمجيات مجتهد ومطور ويب",
+  "projects_descriptions": {
+    "business": "موقع ويب تم إنشاؤه لخدمات الأعمال القائمة على الاشتراك. مشفر باستخدام HTML و CSS.",
+    "seminar": "موقع ويب متجاوب يمثل ويصف ندوة عقدتها شركة.",
+    "unity": "لعبة توصيل 2D تم تطويرها في Unity باستخدام C#.",
+    "login": "صفحة تسجيل الدخول تم إنشاؤها في React Js متصلة بـ Firebase."
+  },
+  "contact_page": {
+    "title": "تواصل معي",
+    "namePlaceholder": "الاسم",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "messagePlaceholder": "أدخل الرسالة",
+    "sendMessageButton": "إرسال رسالة",
+    "errorName": "يرجى إدخال الاسم.",
+    "errorEmail": "يرجى إدخال بريد إلكتروني صالح.",
+    "errorMessage": "يرجى إدخال رسالة."
+  }
 }

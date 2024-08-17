@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
+import { Montserrat } from "next/font/google";
 import type { AppProps } from "next/app";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Menu, Layout } from "antd";
 import { useRouter } from "next/router";
 import { appWithTranslation, useTranslation } from "next-i18next";
@@ -10,13 +11,16 @@ import {
   SettingOutlined,
   MailFilled,
 } from "@ant-design/icons";
-
+const montserrat = Montserrat({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
 const { Sider, Content } = Layout;
 
 function App({ Component, pageProps }: AppProps) {
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter();
-  const { t } = useTranslation("common");
+  const { i18n, t } = useTranslation("common");
 
   const toggleSider = () => {
     setCollapsed(!collapsed);
@@ -93,9 +97,15 @@ function App({ Component, pageProps }: AppProps) {
           />
         </div>
       </Sider>
-      <Layout className="lg:ml-[450px]">
+      <Layout
+        className={`${
+          i18n.language == "en" ? "lg:ml-[450px]" : "lg:mr-[450px]"
+        }`}
+      >
         <Content
-          className={`flex-col min-h-screen justify-center items-center bg-[#111] dark:text-white overflow-y-auto ${
+          className={`${
+            montserrat.className
+          } flex-col min-h-screen justify-center items-center bg-[#111] dark:text-white overflow-y-auto ${
             collapsed ? "" : "hidden"
           } md:block`}
         >
