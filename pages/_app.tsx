@@ -1,12 +1,13 @@
 import "@/styles/globals.css";
 import { Montserrat } from "next/font/google";
 import type { AppProps } from "next/app";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Menu, Layout } from "antd";
 import { useRouter } from "next/router";
 import { appWithTranslation, useTranslation } from "next-i18next";
 import { FloatButton } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
+import { motion } from "framer-motion";
 
 import {
   HomeOutlined,
@@ -24,7 +25,6 @@ function App({ Component, pageProps }: AppProps) {
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter();
   const { i18n, t } = useTranslation("common");
-  const { pathname, asPath, query } = router;
 
   const toggleSider = () => {
     setCollapsed(!collapsed);
@@ -114,11 +114,19 @@ function App({ Component, pageProps }: AppProps) {
         <Content
           className={`${
             montserrat.className
-          } flex-col min-h-screen justify-center items-center bg-[#111] dark:text-white overflow-y-auto ${
+          } flex-col min-h-screen justify-center items-center bg-[#111] text-red-500 dark:text-white overflow-y-auto ${
             collapsed ? "" : "hidden"
           } md:block`}
         >
-          <Component {...pageProps} />
+          <motion.div
+            initial={{ x: i18n.language === "ar" ? 200 : -200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: i18n.language === "ar" ? -200 : 200, opacity: 0 }}
+            transition={{ duration: 0.7 }}
+            key={router.asPath}
+          >
+            <Component {...pageProps} />
+          </motion.div>
         </Content>
       </Layout>
     </Layout>
