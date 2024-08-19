@@ -42,3 +42,6 @@ body {
   direction: rtl !important;
   text-align: right !important;
 }
+.ant-menu-item-selected {
+  background-color: #bbbbbb !important;
+}

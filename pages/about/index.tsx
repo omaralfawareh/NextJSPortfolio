@@ -88,7 +88,7 @@ function About() {
         href="/assets/Resume.pdf"
         target="_blank"
         locale="en"
-        className="text-base bg-black px-5 py-2 w-full md:w-1/3 rounded-l mt-2 hover:text-white text-center "
+        className="text-base bg-black text-white dark:bg-black px-5 py-2 w-full md:w-1/3 rounded-l mt-2 hover:tracking-widest transition-[letter-spacing] text-center "
       >
         {t("resume")}
       </Link>
@@ -116,7 +116,9 @@ function About() {
               {
                 children: (
                   <div className="flex flex-col">
-                    <p className="text-white text-base">Shahid, MBC Group</p>
+                    <p className="dark:text-white text-base">
+                      Shahid, MBC Group
+                    </p>
                     <span className="text-[#bbb] text-base">
                       {t("associate_software_engineer")}
                     </span>
@@ -127,7 +129,7 @@ function About() {
               {
                 children: (
                   <div className="flex flex-col">
-                    <p className="text-white text-base">Eduhax</p>
+                    <p className="dark:text-white text-base">Eduhax</p>
                     <span className="text-[#bbb] text-base">
                       {t("web_developer_intern")}
                     </span>
@@ -138,7 +140,7 @@ function About() {
               {
                 children: (
                   <div className="flex flex-col">
-                    <p className="text-white text-base">Orange Jordan</p>
+                    <p className="dark:text-white text-base">Orange Jordan</p>
                     <span className="text-[#bbb] text-base">
                       {t("full_stack_developer_intern")}
                     </span>
@@ -158,7 +160,7 @@ function About() {
               {
                 children: (
                   <div className="flex flex-col">
-                    <p className="text-white text-base">
+                    <p className="dark:text-white text-base">
                       {t("princess_sumaya_university")}
                     </p>
                     <span className="text-[#bbb] text-base">
@@ -171,7 +173,7 @@ function About() {
               {
                 children: (
                   <div className="flex flex-col">
-                    <p className="text-white text-base">
+                    <p className="dark:text-white text-base">
                       {t("al_ittihad_international_schools")}
                     </p>
                     <span className="text-[#bbb] text-base">
