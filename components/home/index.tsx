@@ -62,7 +62,7 @@ const Home = () => {
       </div>
       <Link
         href="/about"
-        className="text-base bg-black px-5 py-2 w-full md:w-1/3 rounded-l mt-2 hover:text-white text-center md:hidden"
+        className="text-base bg-black px-5 py-2 w-full md:w-1/3 rounded-l mt-2 text-white text-center md:hidden"
       >
         {t("about_me")}
       </Link>
