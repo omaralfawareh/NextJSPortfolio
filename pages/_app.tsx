@@ -52,11 +52,17 @@ function App({ Component, pageProps }: AppProps) {
       localStorage.setItem("theme", "dark");
     }
   };
+  useEffect(() => {
+    const theme =
+      window.localStorage["theme"] ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light");
+
+    document.body.classList.add(theme);
+  }, []);
 
   useEffect(() => {
-    const theme = window.localStorage["theme"] || "dark";
-    document.body.classList.add(theme);
-    localStorage.setItem("theme", theme);
     setSelectedKey(router.pathname);
   }, [router.pathname]);
 
