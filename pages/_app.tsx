@@ -5,8 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Menu, Layout } from "antd";
 import { useRouter } from "next/router";
 import { appWithTranslation, useTranslation } from "next-i18next";
-import { FloatButton } from "antd";
-import { GlobalOutlined, MoonOutlined } from "@ant-design/icons";
+
 import { motion } from "framer-motion";
 
 import {
@@ -15,6 +14,7 @@ import {
   SettingOutlined,
   MailFilled,
 } from "@ant-design/icons";
+import FloatButtons from "@/components/FloatButtons";
 
 const montserrat = Montserrat({
   weight: ["400", "700"],
@@ -33,45 +33,13 @@ function App({ Component, pageProps }: AppProps) {
     setCollapsed(!collapsed);
   };
 
-  const handleChangeLanguage = () => {
-    const nextLanguage = i18n.language === "en" ? "ar" : "en";
-    const newUrl = `${window.location.origin}/${nextLanguage}/${router.pathname}`;
-    window.location.href = newUrl;
-  };
-
-  const handleChangeTheme = () => {
-    const body = document.body;
-
-    if (body.classList.contains("dark")) {
-      body.classList.remove("dark");
-      body.classList.add("light");
-      localStorage.setItem("theme", "light");
-    } else {
-      body.classList.remove("light");
-      body.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
-  };
-  useEffect(() => {
-    const theme =
-      window.localStorage["theme"] ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
-
-    document.body.classList.add(theme);
-  }, []);
-
   useEffect(() => {
     setSelectedKey(router.pathname);
   }, [router.pathname]);
 
   return (
     <Layout className={`fixed w-screen h-screen`}>
-      <FloatButton.Group>
-        <FloatButton icon={<MoonOutlined />} onClick={handleChangeTheme} />
-        <FloatButton icon={<GlobalOutlined />} onClick={handleChangeLanguage} />
-      </FloatButton.Group>
+      <FloatButtons />
       <Sider
         className="fixed h-full"
         breakpoint="lg"
