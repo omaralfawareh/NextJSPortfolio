@@ -8,7 +8,6 @@ const nextConfig = {
     locales: ["en", "ar"],
     defaultLocale: "en",
   },
-  experimental: { optimizeCss: false },
   reactStrictMode: true,
   transpilePackages: [
     "antd",
