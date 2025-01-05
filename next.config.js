@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: "true",
+  enabled: true,
 });
 
 const nextConfig = {
@@ -8,7 +8,6 @@ const nextConfig = {
     locales: ["en", "ar"],
     defaultLocale: "en",
   },
-  experimental: { optimizeCss: false },
   reactStrictMode: true,
   transpilePackages: [
     "antd",
