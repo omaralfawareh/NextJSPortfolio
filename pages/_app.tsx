@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Menu, Layout } from "antd";
 import { useRouter } from "next/router";
 import { appWithTranslation, useTranslation } from "next-i18next";
-
+import { Analytics } from "@vercel/analytics/react";
 import { motion } from "framer-motion";
 
 import {
@@ -154,6 +154,7 @@ function App({ Component, pageProps }: AppProps) {
             key={router.asPath}
           >
             <Component {...pageProps} />
+            <Analytics />
           </motion.div>
         </Content>
       </Layout>
