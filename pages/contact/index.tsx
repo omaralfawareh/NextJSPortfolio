@@ -59,7 +59,6 @@ const Index: React.FC = () => {
       toast({
         title: "Success",
         description: resultData.message,
-        position: "top-left",
       });
     } catch (e) {
       const error = e as Error;
