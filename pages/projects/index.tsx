@@ -31,7 +31,7 @@ const Index = () => {
     },
   ];
   return (
-    <div className="flex flex-col gap-8 min-h-screen p-1 pt-12 sm:pt-16 lg:pt-20 md:p-12 text-base max-h-screen">
+    <div className="flex flex-col gap-8 p-1 pt-12 sm:pt-16 lg:pt-20 md:p-12 text-base min-h-screen">
       <h1
         className={`${align} font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 dark:text-white`}
       >
