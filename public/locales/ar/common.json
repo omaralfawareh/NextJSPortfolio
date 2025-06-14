@@ -17,7 +17,7 @@
   "resume": "السيرة الذاتية",
   "skills": "المهارات",
   "experience": "الخبرة",
-  "associate_software_engineer": "مهندس برمجيات مساعد",
+  "associate_software_engineer": "مهندس برمجيات ",
   "web_developer_intern": "متدرب مطور ويب",
   "full_stack_developer_intern": "متدرب مطور Full-Stack",
   "education": "التعليم",
@@ -53,5 +53,10 @@
     "errorName": "يرجى إدخال الاسم.",
     "errorEmail": "يرجى إدخال بريد إلكتروني صالح.",
     "errorMessage": "يرجى إدخال رسالة."
+  },
+  "projects_page": {
+    "subtitle": "استكشف مشاريعي ومساهماتي في البرمجة على GitHub",
+    "github_projects_title": "مشاريعي على GitHub",
+    "visit_github": "زيارة GitHub"
   }
 }

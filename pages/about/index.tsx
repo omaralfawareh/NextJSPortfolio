@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Timeline } from "antd";
+import Timeline from "@/components/ui/timeline";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
@@ -46,145 +46,210 @@ function About() {
   ];
 
   return (
-    <div className="flex flex-col gap-8 justify-center p-12 text-base">
-      <h1 className={`${align} font-medium text-4xl`}>{t("about_me")}</h1>
-      <h2 className={`${align} text-2xl`}>{t("name")}</h2>
-      <p className={`${align} text-left text-xl text-[#bbb]`}>
-        {t("profession")}
-      </p>
-      <hr />
-      <div className="flex flex-col gap-4">
-        <p>{t("intro_part_1")}</p>
-        <p>{t("intro_part_2")}</p>
-      </div>
-      <hr />
-      <ul className="w-full">
-        <li>
-          <span className="inline-block w-28">{t("birthday")} :</span>
-          <span>17/04/2002</span>
-        </li>
-        <li className="w-full">
-          <span className="inline-block w-28">{t("age")} :</span>
-          <span>{age}</span>
-        </li>
-        <li>
-          <span className="inline-block w-28">{t("address")} :</span>
-          <span>{t("address_value")}</span>
-        </li>
-        <li>
-          <span className="inline-block w-28">{t("email")} :</span>
-          <span>
-            <a href="mailto:alfawareho@gmail.com">alfawareho@gmail.com</a>
-          </span>
-        </li>
-        <li>
-          <span className="inline-block w-28">{t("phone")} :</span>
-          <span>
-            <a href="tel:+962791141046">00962791141046</a>
-          </span>
-        </li>
-      </ul>
-      <Link
-        href="/assets/Resume.pdf"
-        target="_blank"
-        locale="en"
-        className="text-base bg-black text-white dark:bg-black px-5 py-2 w-full md:w-1/3 rounded-l mt-2 hover:tracking-widest transition-[letter-spacing] text-center "
-      >
-        {t("resume")}
-      </Link>
-      <h2 className={`${align} text-left text-2xl`}>{t("skills")}</h2>
-      <hr />
-      <div className="flex justify-between flex-wrap">
-        {skills.map((skill) => (
-          <Image
-            alt={skill.alt}
-            key={skill.alt}
-            src={skill.src}
-            width={100}
-            height={100}
-          />
-        ))}
-      </div>
-      <hr />
-      <div className="flex justify-center">
-        <div className="flex flex-col gap-2 w-full">
-          <h2 className={`${align} text-left text-2xl m-1`}>
-            {t("experience")}
+    <div className="min-h-screen px-4 py-6 pt-12 sm:px-6 sm:pt-16 lg:px-12 lg:pt-20 max-w-7xl mx-auto">
+      <div className="space-y-8 sm:space-y-12">
+        {/* Header Section */}
+        <div className="space-y-4">
+          <h1
+            className={`${align} font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 dark:text-white`}
+          >
+            {t("about_me")}
+          </h1>
+          <h2
+            className={`${align} text-xl sm:text-2xl lg:text-3xl text-gray-700 dark:text-gray-300`}
+          >
+            {t("name")}
           </h2>
-          <Timeline
-            items={[
-              {
-                children: (
-                  <div className="flex flex-col">
-                    <p className="dark:text-white text-base">
-                      Shahid, MBC Group
-                    </p>
-                    <span className="text-[#bbb] text-base">
-                      {t("associate_software_engineer")}
-                    </span>
-                  </div>
-                ),
-                color: "black",
-              },
-              {
-                children: (
-                  <div className="flex flex-col">
-                    <p className="dark:text-white text-base">Eduhax</p>
-                    <span className="text-[#bbb] text-base">
-                      {t("web_developer_intern")}
-                    </span>
-                  </div>
-                ),
-                color: "black",
-              },
-              {
-                children: (
-                  <div className="flex flex-col">
-                    <p className="dark:text-white text-base">Orange Jordan</p>
-                    <span className="text-[#bbb] text-base">
-                      {t("full_stack_developer_intern")}
-                    </span>
-                  </div>
-                ),
-                color: "black",
-              },
-            ]}
-          />
+          <p
+            className={`${align} text-lg sm:text-xl text-gray-500 dark:text-gray-400`}
+          >
+            {t("profession")}
+          </p>
         </div>
-        <div className="w-full flex gap-2 m-1 flex-col">
-          <h2 className={`${align} text-left text-2xl m-1`}>
-            {t("education")}
+
+        <hr className="border-gray-300 dark:border-gray-700" />
+
+        {/* Introduction */}
+        <div className="space-y-4 sm:space-y-6">
+          <p className="text-base sm:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+            {t("intro_part_1")}
+          </p>
+          <p className="text-base sm:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+            {t("intro_part_2")}
+          </p>
+        </div>
+
+        <hr className="border-gray-300 dark:border-gray-700" />
+
+        {/* Personal Info */}
+        <div className="space-y-4">
+          <ul className="space-y-3 sm:space-y-4">
+            <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+              <span className="font-medium text-gray-900 dark:text-white min-w-[100px] sm:min-w-[120px]">
+                {t("address")} :
+              </span>
+              <span className="text-gray-700 dark:text-gray-300">
+                {t("address_value")}
+              </span>
+            </li>
+            <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+              <span className="font-medium text-gray-900 dark:text-white min-w-[100px] sm:min-w-[120px]">
+                {t("email")} :
+              </span>
+              <a
+                href="mailto:alfawareho@gmail.com"
+                className="text-blue-600 dark:text-blue-400 hover:underline break-all"
+              >
+                alfawareho@gmail.com
+              </a>
+            </li>
+            <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+              <span className="font-medium text-gray-900 dark:text-white min-w-[100px] sm:min-w-[120px]">
+                {t("phone")} :
+              </span>
+              <a
+                href="tel:+962791141046"
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                00962791141046
+              </a>
+            </li>
+          </ul>
+
+          <Link
+            href="/assets/Resume.pdf"
+            target="_blank"
+            locale="en"
+            className="inline-block w-full sm:w-auto text-center bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium px-6 py-3 rounded-lg hover:bg-gray-600 dark:hover:bg-gray-100 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+          >
+            {t("resume")}
+          </Link>
+        </div>
+
+        <hr className="border-gray-300 dark:border-gray-700" />
+
+        {/* Skills Section */}
+        <div className="space-y-6" dir="ltr">
+          <h2
+            className={`${align} text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white`}
+          >
+            {t("skills")}
           </h2>
-          <Timeline
-            items={[
-              {
-                children: (
-                  <div className="flex flex-col">
-                    <p className="dark:text-white text-base">
-                      {t("princess_sumaya_university")}
-                    </p>
-                    <span className="text-[#bbb] text-base">
-                      {t("software_engineering")}
-                    </span>
-                  </div>
-                ),
-                color: "black",
-              },
-              {
-                children: (
-                  <div className="flex flex-col">
-                    <p className="dark:text-white text-base">
-                      {t("al_ittihad_international_schools")}
-                    </p>
-                    <span className="text-[#bbb] text-base">
-                      {t("student")}
-                    </span>
-                  </div>
-                ),
-                color: "black",
-              },
-            ]}
-          />
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 sm:gap-6">
+            {skills.map((skill) => (
+              <div
+                key={skill.alt}
+                className="flex flex-col items-center p-3 rounded-lg bg-white dark:bg-gray-800/60 shadow-sm hover:shadow-md dark:hover:bg-gray-700/60 transition-all duration-200 border border-gray-100 dark:border-gray-700/50"
+              >
+                <Image
+                  alt={skill.alt}
+                  src={skill.src}
+                  width={60}
+                  height={60}
+                  className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain"
+                />
+                <span className="mt-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300 text-center">
+                  {skill.alt}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <hr className="border-gray-300 dark:border-gray-700" />
+
+        {/* Experience and Education */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Experience */}
+          <div className="space-y-6">
+            <h2
+              className={`${align} text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white`}
+            >
+              {t("experience")}
+            </h2>
+            <Timeline
+              items={[
+                {
+                  children: (
+                    <div className="space-y-1">
+                      <p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                        Shahid, MBC Group
+                      </p>
+                      <span className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                        {t("associate_software_engineer")}
+                      </span>
+                    </div>
+                  ),
+                  color: "black",
+                },
+                {
+                  children: (
+                    <div className="space-y-1">
+                      <p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                        Eduhax
+                      </p>
+                      <span className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                        {t("web_developer_intern")}
+                      </span>
+                    </div>
+                  ),
+                  color: "black",
+                },
+                {
+                  children: (
+                    <div className="space-y-1">
+                      <p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                        Orange Jordan
+                      </p>
+                      <span className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                        {t("full_stack_developer_intern")}
+                      </span>
+                    </div>
+                  ),
+                  color: "black",
+                },
+              ]}
+            />
+          </div>
+
+          {/* Education */}
+          <div className="space-y-6">
+            <h2
+              className={`${align} text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white`}
+            >
+              {t("education")}
+            </h2>
+            <Timeline
+              items={[
+                {
+                  children: (
+                    <div className="space-y-1">
+                      <p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                        {t("princess_sumaya_university")}
+                      </p>
+                      <span className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                        {t("software_engineering")}
+                      </span>
+                    </div>
+                  ),
+                  color: "black",
+                },
+                {
+                  children: (
+                    <div className="space-y-1">
+                      <p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                        {t("al_ittihad_international_schools")}
+                      </p>
+                      <span className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                        {t("student")}
+                      </span>
+                    </div>
+                  ),
+                  color: "black",
+                },
+              ]}
+            />
+          </div>
         </div>
       </div>
     </div>
