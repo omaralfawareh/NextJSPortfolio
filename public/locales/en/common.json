@@ -53,5 +53,10 @@
     "errorName": "Please enter a name.",
     "errorEmail": "Please enter a valid email address.",
     "errorMessage": "Please enter a message."
+  },
+  "projects_page": {
+    "subtitle": "Explore my coding projects and contributions on GitHub",
+    "github_projects_title": "My GitHub Projects",
+    "visit_github": "Visit GitHub"
   }
 }

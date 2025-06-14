@@ -86,20 +86,6 @@ function About() {
           <ul className="space-y-3 sm:space-y-4">
             <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
               <span className="font-medium text-gray-900 dark:text-white min-w-[100px] sm:min-w-[120px]">
-                {t("birthday")} :
-              </span>
-              <span className="text-gray-700 dark:text-gray-300">
-                17/04/2002
-              </span>
-            </li>
-            <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-              <span className="font-medium text-gray-900 dark:text-white min-w-[100px] sm:min-w-[120px]">
-                {t("age")} :
-              </span>
-              <span className="text-gray-700 dark:text-gray-300">{age}</span>
-            </li>
-            <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-              <span className="font-medium text-gray-900 dark:text-white min-w-[100px] sm:min-w-[120px]">
                 {t("address")} :
               </span>
               <span className="text-gray-700 dark:text-gray-300">
@@ -143,7 +129,7 @@ function About() {
         <hr className="border-gray-300 dark:border-gray-700" />
 
         {/* Skills Section */}
-        <div className="space-y-6">
+        <div className="space-y-6" dir="ltr">
           <h2
             className={`${align} text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white`}
           >
@@ -153,7 +139,7 @@ function About() {
             {skills.map((skill) => (
               <div
                 key={skill.alt}
-                className="flex flex-col items-center p-3 rounded-lg bg-white dark:bg-[#111] shadow-sm hover:shadow-md transition-shadow"
+                className="flex flex-col items-center p-3 rounded-lg bg-white dark:bg-gray-800/60 shadow-sm hover:shadow-md dark:hover:bg-gray-700/60 transition-all duration-200 border border-gray-100 dark:border-gray-700/50"
               >
                 <Image
                   alt={skill.alt}
@@ -162,7 +148,7 @@ function About() {
                   height={60}
                   className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain"
                 />
-                <span className="mt-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center">
+                <span className="mt-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300 text-center">
                   {skill.alt}
                 </span>
               </div>

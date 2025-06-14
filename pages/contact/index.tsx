@@ -6,7 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 
 const Index: React.FC = () => {
-  const { t } = useTranslation("common");
+  const { i18n, t } = useTranslation("common");
   const { toast } = useToast();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -14,12 +14,14 @@ const Index: React.FC = () => {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const align = i18n?.language === "ar" ? "text-right" : "text-left";
+
   const handleMessage = async () => {
     if (name === "") {
       toast({
         variant: "destructive",
         title: "Error",
-        description: t("contact_page.err`orName"),
+        description: t("contact_page.errorName"),
       });
       return;
     }
@@ -87,12 +89,6 @@ const Index: React.FC = () => {
         <div className="bg-white dark:bg-black rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 p-6 sm:p-8">
           <div className="space-y-6">
             <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-              >
-                {t("contact_page.nameLabel", "Name")}
-              </label>
               <input
                 id="name"
                 type="text"
@@ -104,12 +100,6 @@ const Index: React.FC = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-              >
-                {t("contact_page.emailLabel", "Email")}
-              </label>
               <input
                 id="email"
                 type="email"
@@ -133,12 +123,6 @@ const Index: React.FC = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-              >
-                {t("contact_page.messageLabel", "Message")}
-              </label>
               <textarea
                 id="message"
                 rows={5}
