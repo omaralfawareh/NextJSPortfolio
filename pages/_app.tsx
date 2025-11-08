@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import { Montserrat } from "next/font/google";
 import type { AppProps } from "next/app";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { appWithTranslation, useTranslation } from "next-i18next";
 import { Analytics } from "@vercel/analytics/react";
@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { Home, User, Settings, Mail, Menu, X } from "lucide-react";
 import FloatButtons from "@/components/FloatButtons";
 import { Toaster } from "@/components/ui/toaster";
+import Link from "next/link";
 
 const montserrat = Montserrat({
   weight: ["400", "700"],
@@ -75,7 +76,6 @@ function App({ Component, pageProps }: AppProps) {
   ];
 
   const handleMenuItemClick = (key: string) => {
-    router.push(key);
     setSelectedKey(key);
     closeMobileMenu();
   };
@@ -88,9 +88,11 @@ function App({ Component, pageProps }: AppProps) {
       {/* Mobile Header */}
       <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800 px-4 py-3">
         <div className="flex items-center justify-between">
-          <h1 className="text-lg font-bold text-black dark:text-white">
-            {t("portfolio", "Portfolio")}
-          </h1>
+          <Link href="/">
+            <h1 className="text-lg font-bold text-black dark:text-white">
+              {t("portfolio", "Portfolio")}
+            </h1>
+          </Link>
           <button
             onClick={toggleMobileMenu}
             className="p-2 rounded-lg bg-gray-100 dark:bg-[#111] text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
@@ -129,12 +131,6 @@ function App({ Component, pageProps }: AppProps) {
             <h2 className="text-xl font-bold text-black dark:text-white">
               {t("menu", "Menu")}
             </h2>
-            <button
-              onClick={closeMobileMenu}
-              className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-[#111]"
-            >
-              <X size={20} />
-            </button>
           </div>
 
           {/* Mobile navigation */}
@@ -145,8 +141,9 @@ function App({ Component, pageProps }: AppProps) {
                 const isSelected = selectedKey === item.key;
 
                 return (
-                  <button
+                  <Link
                     key={item.key}
+                    href={item.key}
                     onClick={() => handleMenuItemClick(item.key)}
                     className={`w-full flex items-center gap-4 px-4 py-2.5 rounded-xl text-left transition-all duration-200 ${
                       i18n.language === "ar"
@@ -160,7 +157,7 @@ function App({ Component, pageProps }: AppProps) {
                   >
                     <Icon size={20} />
                     <span className="text-base font-medium">{item.label}</span>
-                  </button>
+                  </Link>
                 );
               })}
             </div>
@@ -184,8 +181,9 @@ function App({ Component, pageProps }: AppProps) {
                 const isSelected = selectedKey === item.key;
 
                 return (
-                  <button
+                  <Link
                     key={item.key}
+                    href={item.key}
                     onClick={() => handleMenuItemClick(item.key)}
                     className={`group w-48 flex items-center justify-center gap-4 px-6 py-3 rounded-xl transition-all duration-200 ${
                       i18n.language === "ar" ? "flex-row-reverse" : ""
@@ -199,7 +197,7 @@ function App({ Component, pageProps }: AppProps) {
                     <span className="text-lg font-semibold group-hover:tracking-wider transition-[letter-spacing]">
                       {item.label}
                     </span>
-                  </button>
+                  </Link>
                 );
               })}
             </div>

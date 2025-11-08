@@ -56,7 +56,7 @@ const FloatButtons = () => {
     >
       <button
         onClick={handleChangeTheme}
-        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white dark:bg-black border-2 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white active:scale-95"
+        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white hover:border-gray-400 dark:bg-black border-2 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl dark:hover:border-gray-400 transition-all duration-300 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white active:scale-95"
         aria-label={
           theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
         }
@@ -69,7 +69,7 @@ const FloatButtons = () => {
       </button>
       <button
         onClick={handleChangeLanguage}
-        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white dark:bg-black border-2 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white active:scale-95"
+        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white hover:border-gray-400 dark:bg-black border-2 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 dark:hover:border-gray-400 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white active:scale-95"
         aria-label={`Switch to ${
           i18n.language === "en" ? "Arabic" : "English"
         }`}

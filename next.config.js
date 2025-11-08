@@ -1,14 +1,11 @@
 /** @type {import('next').NextConfig} */
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: false,
-});
 
 const nextConfig = {
   i18n: {
     locales: ["en", "ar"],
     defaultLocale: "en",
   },
-  
+  reactCompiler: true,
   experimental: {
     optimizeCss: true,
   },
@@ -26,4 +23,4 @@ const nextConfig = {
   ],
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = nextConfig;
